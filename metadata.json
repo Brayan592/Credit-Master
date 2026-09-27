@@ -1,0 +1,6 @@
+{
+  "name": "CrediMaster - Gestor de Tarjetas de Crédito",
+  "description": "Control financiero de tarjetas de crédito: fechas de corte, límites, meses sin intereses, recordatorios de pago y simulador de intereses.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
