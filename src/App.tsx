@@ -262,12 +262,12 @@ export default function App() {
   };
 
   return (
-    <div className="relative min-h-screen bg-[#030712] text-slate-100 flex flex-col overflow-x-hidden selection:bg-emerald-500/30 selection:text-emerald-200">
+    <div className="relative min-h-screen bg-[#f6f8fb] text-slate-800 flex flex-col overflow-x-hidden selection:bg-emerald-500/20 selection:text-emerald-900">
       {/* Liquid Ambient Fluid Light Orbs that shine through frosted glass panels */}
-      <div className="fixed -top-40 -left-40 w-[600px] h-[600px] rounded-full bg-emerald-500/12 blur-[150px] pointer-events-none z-0 animate-liquid-1" />
-      <div className="fixed top-1/4 -right-48 w-[680px] h-[680px] rounded-full bg-cyan-500/12 blur-[170px] pointer-events-none z-0 animate-liquid-2" />
-      <div className="fixed bottom-10 left-1/4 w-[550px] h-[550px] rounded-full bg-indigo-500/10 blur-[160px] pointer-events-none z-0 animate-liquid-3" />
-      <div className="fixed -bottom-48 right-16 w-[500px] h-[500px] rounded-full bg-teal-500/12 blur-[150px] pointer-events-none z-0 animate-liquid-1" />
+      <div className="fixed -top-40 -left-40 w-[600px] h-[600px] rounded-full bg-emerald-400/20 blur-[140px] pointer-events-none z-0 animate-liquid-1" />
+      <div className="fixed top-1/4 -right-48 w-[680px] h-[680px] rounded-full bg-sky-400/18 blur-[160px] pointer-events-none z-0 animate-liquid-2" />
+      <div className="fixed bottom-10 left-1/4 w-[550px] h-[550px] rounded-full bg-indigo-300/18 blur-[150px] pointer-events-none z-0 animate-liquid-3" />
+      <div className="fixed -bottom-48 right-16 w-[500px] h-[500px] rounded-full bg-teal-300/18 blur-[140px] pointer-events-none z-0 animate-liquid-1" />
 
       {/* Top Bar Contract (Wordmark, Nav links, Actions) */}
       <Header
@@ -369,10 +369,10 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <footer className="w-full border-t border-white/10 bg-slate-950/70 backdrop-blur-2xl py-6 text-center text-xs text-slate-400 relative z-10">
+      <footer className="w-full border-t border-slate-200/80 bg-white/70 backdrop-blur-2xl py-6 text-center text-xs text-slate-500 relative z-10 mt-12">
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <span>CrediMaster Liquid Glass © {new Date().getFullYear()} · Gestión inteligente de crédito</span>
-          <span className="text-[11px] text-slate-400">
+          <span className="font-medium text-slate-600">CrediMaster Liquid Glass © {new Date().getFullYear()} · Gestión inteligente de crédito</span>
+          <span className="text-[11px] text-slate-500">
             Datos guardados localmente en tu navegador. Tus finanzas son 100% privadas.
           </span>
         </div>
@@ -439,17 +439,17 @@ export default function App() {
 
       {/* Safe Liquid Glass Confirmation Dialog (Replaces window.confirm) */}
       {deleteConfirm && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-2xl">
-          <div className="relative w-full max-w-md liquid-glass rounded-3xl p-6 sm:p-7 shadow-[0_25px_60px_rgba(0,0,0,0.8)] border border-rose-500/40 space-y-4">
-            <div className="w-12 h-12 rounded-2xl bg-rose-500/15 border border-rose-500/30 flex items-center justify-center text-rose-400 mx-auto">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-md">
+          <div className="relative w-full max-w-md liquid-glass rounded-3xl p-6 sm:p-7 shadow-[0_25px_60px_rgba(15,23,42,0.15)] border border-rose-300 space-y-4 bg-white/95">
+            <div className="w-12 h-12 rounded-2xl bg-rose-50 border border-rose-200 flex items-center justify-center text-rose-500 mx-auto shadow-sm">
               <AlertTriangle className="w-6 h-6" />
             </div>
             <div className="text-center space-y-1.5">
-              <h3 className="text-base font-bold text-white tracking-tight">
+              <h3 className="text-base font-bold text-slate-900 tracking-tight">
                 {deleteConfirm.type === 'card' ? '¿Eliminar esta tarjeta?' : '¿Eliminar este plan MSI?'}
               </h3>
-              <p className="text-xs text-slate-300 leading-relaxed">
-                Estás a punto de eliminar <strong className="text-white">{deleteConfirm.name}</strong>.
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Estás a punto de eliminar <strong className="text-slate-900">{deleteConfirm.name}</strong>.
                 {deleteConfirm.type === 'card' && ' Esta acción desvinculará sus movimientos y compras a plazos asociados.'}
               </p>
             </div>
@@ -457,14 +457,14 @@ export default function App() {
               <button
                 type="button"
                 onClick={() => setDeleteConfirm(null)}
-                className="px-4 py-2 text-xs font-medium text-slate-300 hover:text-white rounded-xl bg-white/[0.04] border border-white/10 transition-colors"
+                className="px-4 py-2 text-xs font-semibold text-slate-600 hover:text-slate-900 rounded-xl bg-slate-100 hover:bg-slate-200/80 border border-slate-200 transition-colors"
               >
                 Cancelar
               </button>
               <button
                 type="button"
                 onClick={executeConfirmedDelete}
-                className="px-5 py-2 text-xs font-bold text-white bg-rose-500 hover:bg-rose-400 rounded-xl shadow-[0_0_20px_rgba(244,63,94,0.4)] transition-all flex items-center gap-1.5"
+                className="px-5 py-2 text-xs font-bold text-white bg-rose-500 hover:bg-rose-600 rounded-xl shadow-[0_4px_16px_rgba(244,63,94,0.35)] transition-all flex items-center gap-1.5 active:scale-95"
               >
                 <Trash2 className="w-4 h-4" />
                 <span>Confirmar y Eliminar</span>

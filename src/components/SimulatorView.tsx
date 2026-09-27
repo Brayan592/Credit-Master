@@ -52,29 +52,29 @@ export const SimulatorView: React.FC<Props> = ({ cards, cycleInfos }) => {
     <div className="space-y-8 pb-12">
       {/* Header */}
       <div>
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-xs font-semibold text-emerald-300 mb-2 backdrop-blur-md">
-          <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-semibold text-emerald-800 mb-2 backdrop-blur-md">
+          <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
           <span>Simulador Financiero Liquid Glass</span>
         </div>
-        <h1 className="text-xl sm:text-2xl font-bold text-white tracking-tight drop-shadow-sm">
+        <h1 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
           Simulador de Pagos e Intereses Bancarios
         </h1>
-        <p className="text-xs text-slate-300">
+        <p className="text-xs text-slate-600">
           Descubre el impacto real entre pagar el mínimo vs pagar para no generar intereses o abonar una cantidad estratégica.
         </p>
       </div>
 
       {/* Simulator Inputs Card */}
       <div className="liquid-glass-card p-6 sm:p-7 rounded-3xl space-y-4">
-        <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-300">
-          <Calculator className="w-4 h-4 text-emerald-400" />
+        <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-800">
+          <Calculator className="w-4 h-4 text-emerald-600" />
           <span>Parámetros de Simulación</span>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           {/* Card Select or Custom */}
           <div>
-            <label className="block text-xs text-slate-300 mb-1.5 font-semibold uppercase tracking-wider">Tarjeta Base</label>
+            <label className="block text-xs text-slate-700 mb-1.5 font-semibold uppercase tracking-wider">Tarjeta Base</label>
             <select
               value={selectedCardId}
               onChange={(e) => {
@@ -82,15 +82,15 @@ export const SimulatorView: React.FC<Props> = ({ cards, cycleInfos }) => {
                 setCustomBalance('');
                 setCustomRate('');
               }}
-              className="w-full liquid-glass-input rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none"
+              className="w-full liquid-glass-input rounded-xl px-3 py-2.5 text-xs text-slate-900 focus:outline-none"
             >
               {cards.length === 0 ? (
-                <option value="" className="bg-slate-900 text-white">Simulación Libre (Ingresa monto y tasa)</option>
+                <option value="" className="bg-white text-slate-900">Simulación Libre (Ingresa monto y tasa)</option>
               ) : (
                 <>
-                  <option value="" className="bg-slate-900 text-white">Simulación Libre Personalizada</option>
+                  <option value="" className="bg-white text-slate-900">Simulación Libre Personalizada</option>
                   {cards.map((c) => (
-                    <option key={c.id} value={c.id} className="bg-slate-900 text-white">
+                    <option key={c.id} value={c.id} className="bg-white text-slate-900">
                       {c.bank} {c.name} (Tasa {c.annualRate}%)
                     </option>
                   ))}
@@ -101,7 +101,7 @@ export const SimulatorView: React.FC<Props> = ({ cards, cycleInfos }) => {
 
           {/* Balance */}
           <div>
-            <label className="block text-xs text-slate-300 mb-1.5 font-semibold uppercase tracking-wider">Deuda o Saldo a Simular (MXN)</label>
+            <label className="block text-xs text-slate-700 mb-1.5 font-semibold uppercase tracking-wider">Deuda o Saldo a Simular (MXN)</label>
             <div className="relative">
               <input
                 type="number"
@@ -110,18 +110,18 @@ export const SimulatorView: React.FC<Props> = ({ cards, cycleInfos }) => {
                 placeholder={balance.toString()}
                 value={customBalance}
                 onChange={(e) => setCustomBalance(e.target.value)}
-                className="w-full liquid-glass-input rounded-xl pl-8 pr-3 py-2 text-sm font-mono text-white placeholder-slate-500 focus:outline-none"
+                className="w-full liquid-glass-input rounded-xl pl-8 pr-3 py-2 text-sm font-mono text-slate-900 placeholder-slate-400 focus:outline-none"
               />
-              <DollarSign className="absolute left-2.5 top-2.5 w-4 h-4 text-emerald-400" />
+              <DollarSign className="absolute left-2.5 top-2.5 w-4 h-4 text-emerald-600" />
             </div>
-            <div className="text-[10px] text-slate-400 mt-1">
+            <div className="text-[10px] text-slate-500 mt-1">
               Saldo actual tarjeta: {formatCurrency(cycleInfo?.totalStatementToPay || 0)}
             </div>
           </div>
 
           {/* Annual rate */}
           <div>
-            <label className="block text-xs text-slate-300 mb-1.5 font-semibold uppercase tracking-wider">Tasa Anual CAT (%)</label>
+            <label className="block text-xs text-slate-700 mb-1.5 font-semibold uppercase tracking-wider">Tasa Anual CAT (%)</label>
             <div className="relative">
               <input
                 type="number"
@@ -129,11 +129,11 @@ export const SimulatorView: React.FC<Props> = ({ cards, cycleInfos }) => {
                 placeholder={rate.toString()}
                 value={customRate}
                 onChange={(e) => setCustomRate(e.target.value)}
-                className="w-full liquid-glass-input rounded-xl pl-8 pr-3 py-2 text-sm font-mono text-white placeholder-slate-500 focus:outline-none"
+                className="w-full liquid-glass-input rounded-xl pl-8 pr-3 py-2 text-sm font-mono text-slate-900 placeholder-slate-400 focus:outline-none"
               />
               <Percent className="absolute left-2.5 top-2.5 w-4 h-4 text-slate-400" />
             </div>
-            <div className="text-[10px] text-slate-400 mt-1">
+            <div className="text-[10px] text-slate-500 mt-1">
               Promedio en México: 45% - 70% anual
             </div>
           </div>
@@ -143,97 +143,97 @@ export const SimulatorView: React.FC<Props> = ({ cards, cycleInfos }) => {
       {/* 3 Strategies Comparison Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Strategy 1: Totalero */}
-        <div className="liquid-glass-card p-6 rounded-3xl border border-emerald-400/40 space-y-4 relative shadow-[0_12px_40px_rgba(16,185,129,0.15)]">
-          <div className="flex items-center justify-between pb-3 border-b border-white/10">
+        <div className="liquid-glass-card p-6 rounded-3xl border border-emerald-300/80 space-y-4 relative shadow-[0_12px_40px_rgba(16,185,129,0.08)]">
+          <div className="flex items-center justify-between pb-3 border-b border-slate-200/80">
             <div className="flex items-center gap-2">
-              <ShieldCheck className="w-5 h-5 text-emerald-400" />
-              <h3 className="text-base font-bold text-white tracking-tight drop-shadow-sm">Pago Totalero</h3>
+              <ShieldCheck className="w-5 h-5 text-emerald-600" />
+              <h3 className="text-base font-bold text-slate-900 tracking-tight">Pago Totalero</h3>
             </div>
-            <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-400/40">
+            <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300">
               Ideal
             </span>
           </div>
 
-          <p className="text-xs text-slate-300">
+          <p className="text-xs text-slate-600">
             Pagas el total de tu estado de cuenta antes de la fecha límite.
           </p>
 
-          <div className="space-y-3 py-3 border-y border-white/10 text-xs">
+          <div className="space-y-3 py-3 border-y border-slate-200/80 text-xs">
             <div className="flex justify-between">
-              <span className="text-slate-400">Intereses pagados:</span>
-              <span className="font-mono font-bold text-emerald-300 text-sm">$0.00 MXN</span>
+              <span className="text-slate-500">Intereses pagados:</span>
+              <span className="font-mono font-bold text-emerald-700 text-sm">$0.00 MXN</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-slate-400">Tiempo de liquidación:</span>
-              <span className="font-mono font-bold text-white">1 mes</span>
+              <span className="text-slate-500">Tiempo de liquidación:</span>
+              <span className="font-mono font-bold text-slate-900">1 mes</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-slate-400">Desembolso total:</span>
-              <span className="font-mono font-bold text-white">{formatCurrency(balance)}</span>
+              <span className="text-slate-500">Desembolso total:</span>
+              <span className="font-mono font-bold text-slate-900">{formatCurrency(balance)}</span>
             </div>
           </div>
 
-          <div className="text-[11px] text-emerald-300 bg-emerald-500/10 p-3 rounded-2xl border border-emerald-500/20 backdrop-blur-md">
+          <div className="text-[11px] text-emerald-800 bg-emerald-50 p-3 rounded-2xl border border-emerald-200 backdrop-blur-md">
             ✓ Tu historial crediticio se mantiene impecable y disfrutas financiamiento sin costo bancario.
           </div>
         </div>
 
         {/* Strategy 2: Pago Mínimo */}
-        <div className="liquid-glass-card p-6 rounded-3xl border border-rose-500/40 space-y-4 relative shadow-[0_12px_40px_rgba(244,63,94,0.15)]">
-          <div className="flex items-center justify-between pb-3 border-b border-white/10">
+        <div className="liquid-glass-card p-6 rounded-3xl border border-rose-300/80 space-y-4 relative shadow-[0_12px_40px_rgba(244,63,94,0.08)]">
+          <div className="flex items-center justify-between pb-3 border-b border-slate-200/80">
             <div className="flex items-center gap-2">
-              <AlertTriangle className="w-5 h-5 text-rose-400" />
-              <h3 className="text-base font-bold text-white tracking-tight drop-shadow-sm">Solo Pago Mínimo</h3>
+              <AlertTriangle className="w-5 h-5 text-rose-600" />
+              <h3 className="text-base font-bold text-slate-900 tracking-tight">Solo Pago Mínimo</h3>
             </div>
-            <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-rose-500/20 text-rose-300 border border-rose-500/40">
+            <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-rose-100 text-rose-800 border border-rose-300">
               Peligro
             </span>
           </div>
 
-          <p className="text-xs text-slate-300">
+          <p className="text-xs text-slate-600">
             Cubres únicamente el mínimo mensual exigido por el banco.
           </p>
 
-          <div className="space-y-3 py-3 border-y border-white/10 text-xs">
+          <div className="space-y-3 py-3 border-y border-slate-200/80 text-xs">
             <div className="flex justify-between">
-              <span className="text-slate-400">Intereses estimados:</span>
-              <span className="font-mono font-bold text-rose-400 text-sm">
+              <span className="text-slate-500">Intereses estimados:</span>
+              <span className="font-mono font-bold text-rose-700 text-sm">
                 {formatCurrency(minimumSim.totalInterestPaid)}
               </span>
             </div>
             <div className="flex justify-between">
-              <span className="text-slate-400">Tiempo de liquidación:</span>
-              <span className="font-mono font-bold text-rose-300">
+              <span className="text-slate-500">Tiempo de liquidación:</span>
+              <span className="font-mono font-bold text-rose-700">
                 {minimumSim.monthsToPayOff} meses ({(minimumSim.monthsToPayOff / 12).toFixed(1)} años)
               </span>
             </div>
             <div className="flex justify-between">
-              <span className="text-slate-400">Costo total pagado:</span>
-              <span className="font-mono font-bold text-white">
+              <span className="text-slate-500">Costo total pagado:</span>
+              <span className="font-mono font-bold text-slate-900">
                 {formatCurrency(minimumSim.totalPaid)}
               </span>
             </div>
           </div>
 
-          <div className="text-[11px] text-rose-300 bg-rose-500/10 p-3 rounded-2xl border border-rose-500/20 backdrop-blur-md">
+          <div className="text-[11px] text-rose-800 bg-rose-50 p-3 rounded-2xl border border-rose-200 backdrop-blur-md">
             ⚠️ Terminarías pagando {Math.round((minimumSim.totalPaid / (balance || 1)) * 10) / 10}x veces el valor original de tu compra por el efecto bola de nieve.
           </div>
         </div>
 
         {/* Strategy 3: Abono Fijo Estratégico */}
-        <div className="liquid-glass-card p-6 rounded-3xl border border-cyan-400/40 space-y-4 relative shadow-[0_12px_40px_rgba(6,182,212,0.15)]">
-          <div className="flex items-center justify-between pb-3 border-b border-white/10">
+        <div className="liquid-glass-card p-6 rounded-3xl border border-cyan-300/80 space-y-4 relative shadow-[0_12px_40px_rgba(6,182,212,0.08)]">
+          <div className="flex items-center justify-between pb-3 border-b border-slate-200/80">
             <div className="flex items-center gap-2">
-              <PiggyBank className="w-5 h-5 text-cyan-400" />
-              <h3 className="text-base font-bold text-white tracking-tight drop-shadow-sm">Abono Estratégico</h3>
+              <PiggyBank className="w-5 h-5 text-cyan-600" />
+              <h3 className="text-base font-bold text-slate-900 tracking-tight">Abono Estratégico</h3>
             </div>
-            <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-400/40">
+            <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-cyan-100 text-cyan-900 border border-cyan-300">
               Recomendado
             </span>
           </div>
 
           <div className="space-y-1.5">
-            <label className="block text-[11px] font-semibold text-slate-300 uppercase tracking-wider">Abono mensual sugerido:</label>
+            <label className="block text-[11px] font-semibold text-slate-700 uppercase tracking-wider">Abono mensual sugerido:</label>
             <div className="relative">
               <input
                 type="number"
@@ -241,34 +241,34 @@ export const SimulatorView: React.FC<Props> = ({ cards, cycleInfos }) => {
                 min="100"
                 value={customPaymentAmount}
                 onChange={(e) => setCustomPaymentAmount(e.target.value)}
-                className="w-full liquid-glass-input rounded-xl pl-7 pr-3 py-1.5 text-xs font-mono text-white focus:outline-none"
+                className="w-full liquid-glass-input rounded-xl pl-7 pr-3 py-1.5 text-xs font-mono text-slate-900 focus:outline-none"
               />
-              <DollarSign className="absolute left-2 top-2 w-3.5 h-3.5 text-cyan-400" />
+              <DollarSign className="absolute left-2 top-2 w-3.5 h-3.5 text-cyan-600" />
             </div>
           </div>
 
-          <div className="space-y-3 py-3 border-y border-white/10 text-xs">
+          <div className="space-y-3 py-3 border-y border-slate-200/80 text-xs">
             <div className="flex justify-between">
-              <span className="text-slate-400">Intereses estimados:</span>
-              <span className="font-mono font-bold text-cyan-300 text-sm">
+              <span className="text-slate-500">Intereses estimados:</span>
+              <span className="font-mono font-bold text-cyan-800 text-sm">
                 {formatCurrency(customSim.totalInterestPaid)}
               </span>
             </div>
             <div className="flex justify-between">
-              <span className="text-slate-400">Tiempo de liquidación:</span>
-              <span className="font-mono font-bold text-white">
+              <span className="text-slate-500">Tiempo de liquidación:</span>
+              <span className="font-mono font-bold text-slate-900">
                 {customSim.monthsToPayOff} meses
               </span>
             </div>
             <div className="flex justify-between">
-              <span className="text-slate-400">Total a desembolsar:</span>
-              <span className="font-mono font-bold text-white">
+              <span className="text-slate-500">Total a desembolsar:</span>
+              <span className="font-mono font-bold text-slate-900">
                 {formatCurrency(customSim.totalPaid)}
               </span>
             </div>
           </div>
 
-          <div className="text-[11px] text-cyan-300 bg-cyan-500/10 p-3 rounded-2xl border border-cyan-500/20 backdrop-blur-md">
+          <div className="text-[11px] text-cyan-900 bg-cyan-50 p-3 rounded-2xl border border-cyan-200 backdrop-blur-md">
             💡 Te ahorras <strong>{formatCurrency(interestSaved)}</strong> en puros intereses y reduces{' '}
             <strong>{monthsSaved} meses</strong> de deuda bancaria comparado con el mínimo.
           </div>
@@ -280,10 +280,10 @@ export const SimulatorView: React.FC<Props> = ({ cards, cycleInfos }) => {
         <div className="liquid-glass-card p-6 sm:p-7 rounded-3xl space-y-4">
           <div className="flex items-center justify-between">
             <div>
-              <h3 className="text-base font-bold text-white tracking-tight drop-shadow-sm">
+              <h3 className="text-base font-bold text-slate-900 tracking-tight">
                 Tabla de Amortización: Abono Estratégico vs Mínimo
               </h3>
-              <p className="text-xs text-slate-400">
+              <p className="text-xs text-slate-500">
                 Primeros 6 meses simulados con un abono mensual de {formatCurrency(customPayment)}
               </p>
             </div>
@@ -291,27 +291,27 @@ export const SimulatorView: React.FC<Props> = ({ cards, cycleInfos }) => {
 
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="bg-white/[0.02] border-b border-white/10 text-slate-400 uppercase text-[11px] tracking-wider">
+              <thead className="bg-slate-50/90 border-b border-slate-200/80 text-slate-600 uppercase text-[11px] tracking-wider">
                 <tr>
-                  <th className="py-3 px-4">Mes</th>
-                  <th className="py-3 px-4 text-right">Saldo Inicial</th>
-                  <th className="py-3 px-4 text-right">Interés Generado</th>
-                  <th className="py-3 px-4 text-right">Tu Abono</th>
-                  <th className="py-3 px-4 text-right">Saldo Restante</th>
+                  <th className="py-3 px-4 font-bold">Mes</th>
+                  <th className="py-3 px-4 text-right font-bold">Saldo Inicial</th>
+                  <th className="py-3 px-4 text-right font-bold">Interés Generado</th>
+                  <th className="py-3 px-4 text-right font-bold">Tu Abono</th>
+                  <th className="py-3 px-4 text-right font-bold">Saldo Restante</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-white/[0.06] text-slate-300 font-mono">
+              <tbody className="divide-y divide-slate-200/80 text-slate-700 font-mono">
                 {customSim.amortization.slice(0, 6).map((item) => (
-                  <tr key={item.month} className="hover:bg-white/[0.03] transition-colors">
-                    <td className="py-2.5 px-4 font-sans font-medium text-white">Mes {item.month}</td>
+                  <tr key={item.month} className="hover:bg-slate-50/60 transition-colors">
+                    <td className="py-2.5 px-4 font-sans font-semibold text-slate-900">Mes {item.month}</td>
                     <td className="py-2.5 px-4 text-right">{formatCurrency(item.balance + item.principal)}</td>
-                    <td className="py-2.5 px-4 text-right text-rose-300">
+                    <td className="py-2.5 px-4 text-right text-rose-700">
                       +{formatCurrency(item.interest)}
                     </td>
-                    <td className="py-2.5 px-4 text-right text-emerald-300 font-bold">
+                    <td className="py-2.5 px-4 text-right text-emerald-700 font-bold">
                       -{formatCurrency(item.payment)}
                     </td>
-                    <td className="py-2.5 px-4 text-right text-white font-bold">
+                    <td className="py-2.5 px-4 text-right text-slate-900 font-bold">
                       {formatCurrency(item.balance)}
                     </td>
                   </tr>

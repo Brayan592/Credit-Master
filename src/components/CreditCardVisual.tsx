@@ -130,12 +130,13 @@ export const CreditCardVisual: React.FC<Props> = ({
       onClick={onSelect}
       className={`group relative flex flex-col justify-between p-6 rounded-3xl border transition-all duration-300 select-none backdrop-blur-2xl bg-gradient-to-br ${theme.glassBg} ${theme.border} ${theme.glow} ${
         onSelect ? 'cursor-pointer hover:-translate-y-1.5 hover:shadow-2xl' : ''
-      } ${isSelected ? 'ring-2 ring-emerald-400 ring-offset-2 ring-offset-slate-950 shadow-[0_0_30px_rgba(16,185,129,0.3)]' : ''}`}
+      } ${isSelected ? 'ring-2 ring-emerald-500 ring-offset-2 ring-offset-[#f6f8fb] shadow-[0_12px_35px_rgba(16,185,129,0.35)]' : ''}`}
       style={{
         minHeight: '235px',
         boxShadow: `
-          0 20px 45px -10px rgba(0, 0, 0, 0.6),
-          inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.35),
+          0 18px 40px -10px rgba(15, 23, 42, 0.25),
+          0 4px 12px -2px rgba(15, 23, 42, 0.1),
+          inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.4),
           inset 0 -1px 1px 0 rgba(0, 0, 0, 0.3)
         `,
       }}
